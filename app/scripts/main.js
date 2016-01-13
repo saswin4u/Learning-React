@@ -2,14 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route } from 'react-router';
 
+// Component definitions
 import App from './components/App';
+import ContactList from './components/ContactList';
 
 window.React = React;
 
 render(
   (<Router>
     <Route path="/" component={App}>
-
+      <Route path="/contact" component={ContactList} />
     </Route>
   </Router>), document.getElementById('app')
 );
