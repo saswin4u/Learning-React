@@ -27,96 +27,20 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+    <div id="app">
 
-    <div class="container-fluid">
-      <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-        </ul>
-        <h3 class="text-muted">Learning react</h3>
-      </div>
-
-      <div id="area"></div>
-      <script type="text/babel">
-        var HelloWorld = React.createClass({
-          propTypes : {
-            name : React.PropTypes.string.isRequired,
-            isPerson : React.PropTypes.bool
-          },
-          getDefaultProps : function(){
-            return {
-              name : 'Aswin'
-            };
-          },
-          getInitialState : function(){
-            return {
-              value : 1
-            };
-          },
-          componentDidMount : function(){
-
-          },
-          _addByOne : function(){
-            this.setState({
-              value: this.state.value + 1
-            });
-          },
-          render : function(){
-            var greeting = "World!";
-
-            if (this.props.isPerson) {
-              greeting = (
-                <Person name={this.props.name} />
-              );
-            }
-
-            return (
-              <div>
-                <h1>Hello {greeting}</h1>
-                {this.state.value}
-                <button className="btn btn-primary" onClick={this._addByOne}>Click Me</button>
-              </div>
-            )
-          }
-        });
-
-        var Person = React.createClass({
-          propTypes : {
-            name : React.PropTypes.string.isRequired
-          },
-          getDefaultProps : function(){
-            return {
-              name : 'Aswin'
-            };
-          },
-          render : function(){
-            return (
-              <span>{this.props.name}!</span>
-            )
-          }
-        });
-
-        ReactDOM.render(
-          <HelloWorld name="Sylvester" isPerson={false} />,//HTML that has to be rendered
-          document.getElementById('area') //place holder where it has to be rendered
-        );
-      </script>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from Sylvester</p>
-      </div>
     </div>
-
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <!-- <script src="/bower_components/requirejs/require.js"></script> -->
     <!-- endbower -->
     <!-- endbuild -->
 
 
     <!-- build:js(.) scripts/plugins.js -->
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+    <!-- <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
@@ -127,25 +51,25 @@
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
     <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script> -->
     <!-- endbuild -->
 
 
     <!-- build:js scripts/main.js -->
-    <script src="/node_modules/react/dist/react.js"></script>
+    <!-- <script src="/node_modules/react/dist/react.js"></script>
     <script src="/node_modules/react-dom/dist/react-dom.js"></script>
-    <script src="/node_modules/babel-core/browser.js"></script>
+    <script src="/node_modules/babel-core/browser.js"></script> -->
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
+    <!-- <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='https://www.google-analytics.com/analytics.js';
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
       ga('create','UA-XXXXX-X');ga('send','pageview');
-    </script>
+    </script> -->
   </body>
 </html>

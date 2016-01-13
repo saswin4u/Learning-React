@@ -36,14 +36,14 @@ module.exports = function (grunt) {
         files: ['bower.json'],
         tasks: ['wiredep']
       },
-      babel: {
-        files: ['<%= config.app %>/scripts/{,*/}*.js'],
-        tasks: ['babel:dist']
-      },
-      babelTest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['babel:test', 'test:watch']
-      },
+      // babel: {
+      //   files: ['<%= config.app %>/scripts/{,*/}*.js'],
+      //   tasks: ['babel:dist']
+      // },
+      // babelTest: {
+      //   files: ['test/spec/{,*/}*.js'],
+      //   tasks: ['babel:test', 'test:watch']
+      // },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -54,6 +54,10 @@ module.exports = function (grunt) {
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'postcss']
+      },
+      scripts: {
+        files: ['<%= config.app %>/scripts/{,*/}*.js'],
+        tasks: ["browserify"]
       }
     },
 
@@ -140,10 +144,26 @@ module.exports = function (grunt) {
       }
     },
 
+    browserify: {
+      dist: {
+        options: {
+          transform: [
+            ['babelify', {
+              presets: ['es2015', 'react']
+            }]
+          ]
+        },
+        files : {
+          '.tmp/scripts/main.js': ['<%= config.app %>/scripts/**/*.js']
+        }
+      }
+    },
+
     // Compiles ES6 with Babel
     babel: {
       options: {
-        sourceMap: true
+        sourceMap: true,
+        presets: ['es2015', 'react']
       },
       dist: {
         files: [{
@@ -369,14 +389,16 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
-        'babel:dist',
+        // 'babel:dist',
+        'browserify',
         'sass'
       ],
       test: [
         'babel'
       ],
       dist: [
-        'babel',
+        // 'babel',
+        'browserify',
         'sass',
         'imagemin',
         'svgmin'
@@ -429,7 +451,7 @@ module.exports = function (grunt) {
     'postcss',
     'concat',
     'cssmin',
-    'uglify',
+    // 'uglify',
     'copy:dist',
     'modernizr',
     'filerev',
@@ -439,7 +461,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:eslint',
-    'test',
+    // 'test',
     'build'
   ]);
 };
