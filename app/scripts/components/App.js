@@ -35,7 +35,7 @@ export default React.createClass({
         </main>
 
 
-        <div className="footer">
+        <div className="footer container">
           <p><span className="glyphicon glyphicon-heart"></span> from Sylvester</p>
         </div>
 
